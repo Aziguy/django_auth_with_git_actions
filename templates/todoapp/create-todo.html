@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <!-- Main Section Start -->
+      <main>
+        <div class="container-fluid mt-5">
+            <!-- Material form TODO -->
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>CREATE TODO</strong>
+                </h5> <br>
+                {% include 'templates/includes/messages.html' %}
+
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" method="POST" action="{% url 'create-todo' %}">
+                        {% csrf_token %}
+                        {{ form.as_div }}
+                        <!-- Send button -->
+                        <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Submit">
+
+                    </form>
+                    <!-- Form -->
+
+                </div>
+
+            </div>
+            <!-- Material form TODO -->
+        </div>
+      </main>
+    <!-- Main Section End -->
+    {% endblock %}

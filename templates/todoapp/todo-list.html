@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %} Todo lists {% endblock %}
+
+{% load static %}
+{% block content %}
+
+<!-- Main Section Start -->
+  <main>
+    <div class="container-fluid mt-5">
+      <h2>List of todos</h2>
+      <br>
+      {% include 'templates/includes/messages.html' %}
+      {% if todos %}
+      <table id="dtMaterialDesignExample" class="table" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th class="th-sm">Title
+              </th>
+              <th class="th-sm">Description
+              </th>
+              <th class="th-sm">Completed
+              </th>
+              <th class="th-sm">Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for todo in todos %}
+            <tr>
+              <td>{{ todo.title }}</td>
+              <td>{{ todo.description }}</td>
+              <td>
+                  {% if todo.is_completed %}
+                      YES <i class="fas fa-check text-success"></i>
+                  {% else %}
+                      NO
+                  {% endif %}
+              </td>
+              <td>
+                  <a href={% url 'todo-details' todo.pk  %} class="btn btn-info">
+                    <i class="fas fa-eye"></i>
+                  </a>
+                  <a href={% url 'todo-edit' todo.pk  %} class="btn btn-warning">
+                    <i class="far fa-edit"></i>
+                  </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>
+                  <a href="?filter=all">All {{ all_count }}</a>
+              </th>
+              <th>
+                  <a href="?filter=incomplete">{{ incomplete_count }} Remaining</a>
+              </th>
+              <th>
+                  <a href="?filter=complete">{{ completed_count }} Completed</a>
+              </th>
+              <th>.
+              </th>
+            </tr>
+          </tfoot>
+      </table>
+      {% else %}
+      <div class="ui message">
+          <div class="header">
+              No items yet
+          </div>
+          <p>You can create your first todo now <a href={% url 'create-todo' %}>Add new</a></p>
+      </div>
+      {% endif %}
+    </div>
+  </main>
+<!-- Main Section End -->
+
+{% endblock %}
