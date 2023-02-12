@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Edit Todo{% endblock %}
+
+
+    {% block content %}
+    <!-- Main Section Start -->
+      <main>
+        <div class="container-fluid mt-5">
+            <!-- Material form TODO EDIT -->
+            <h2>EDIT TODO</h2>
+            {% include 'templates/includes/messages.html' %}
+            <!-- Form -->
+            <form class="text-center" style="color: #757575;" method="POST"  action={% url 'todo-edit' todo.id   %}>
+                {% csrf_token %}
+                {{ form.as_div }}
+                <!-- Send button -->
+                <input class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit" value="Submit">
+            </form>
+            <!-- Form -->
+            <!-- Material TODO EDIT -->
+        </div>
+      </main>
+    <!-- Main Section End -->
+    {% endblock %}

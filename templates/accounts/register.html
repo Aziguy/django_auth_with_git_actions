@@ -8,7 +8,54 @@
     <div class="container-fluid mt-5">
       <h2>Sign up</h2>
       <br>
-      .
+      <!-- Material form sign up -->
+      {% include 'templates/includes/messages.html'%}
+      <div class="card">
+          <h5 class="card-header info-color white-text text-center py-4">
+            <strong>Sign up</strong>
+          </h5>
+          <!--Card content-->
+          <div class="card-body px-lg-5 pt-0">
+              <!-- Form -->
+              <form class="text-center" style="color: #757575;" method="POST" action={% url 'register' %}>
+              {% csrf_token %}
+
+                <!-- UserName -->
+                <div class="md-form mt-3">
+                    <input type="text" id="materialSignupFormUserName" name="username" value="{{ data.username }}" class="form-control">
+                    <label for="materialSignupFormUserName">Username</label>
+                </div>
+
+
+                <!-- E-mail -->
+                <div class="md-form">
+                    <input type="email" id="materialSignUpFormEmail" name="email" value="{{ data.email }}" class="form-control">
+                    <label for="materialSignUpFormEmail">E-mail</label>
+                </div>
+
+                <!-- Password -->
+                <div class="md-form mt-3">
+                    <input type="password" id="materialSignupFormPassWord" name="password" class="form-control">
+                    <label for="materialSignupFormPassWord">Password</label>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="md-form mt-3">
+                    <input type="password" id="materialSignupFormConFirmPassWord" name="password2" class="form-control">
+                    <label for="materialSignupFormConFirmPassWord">Confirm Password</label>
+                </div>
+
+                <!-- Send button -->
+                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit</button>
+
+                </form>
+                <!-- Form -->
+                <div class="alert">Have an account? <a href={% url 'login'  %}>Login</a></div>
+
+            </div>
+
+        </div>
+        <!-- Material form sign up -->
     </div>
   </main>
 <!-- Main Section End -->

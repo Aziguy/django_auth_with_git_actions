@@ -84,7 +84,7 @@ def todo_delete(request, id):
         if todo.owner == request.user:
             todo.delete()
             messages.add_message(request, messages.SUCCESS, "Todo deleted successfully")
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('todo-list'))
         return render(request, 'todoapp/todo-delete.html', context)
 
     return render(request, 'todoapp/todo-delete.html', context)
@@ -113,6 +113,6 @@ def todo_edit(request, id):
 
         messages.add_message(request, messages.SUCCESS, "Todo update success")
 
-        return HttpResponseRedirect(reverse("todo", kwargs={'id': todo.pk}))
+        return HttpResponseRedirect(reverse("todo-details", kwargs={'id': todo.pk}))
 
     return render(request, 'todoapp/todo-edit.html', context)

@@ -130,7 +130,7 @@ def login_user(request):
         messages.add_message(request, messages.SUCCESS,
                              f'Welcome {user.username}')
 
-        return redirect(reverse('home'))
+        return redirect(reverse('todo-list'))
 
     return render(request, 'accounts/login.html')
 
@@ -138,8 +138,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
 
-    messages.add_message(request, messages.SUCCESS,
-                         'Successfully logged out')
+    messages.add_message(request, messages.SUCCESS, 'Successfully logged out')
 
     return redirect(reverse('login'))
 
@@ -157,8 +156,7 @@ def activate_user(request, uidb64, token):
         user.is_email_verified = True
         user.save()
 
-        messages.add_message(request, messages.SUCCESS,
-                             'Email verified, you can now login')
+        messages.add_message(request, messages.SUCCESS, 'Email verified, you can now login')
         return redirect(reverse('login'))
 
     return render(request, 'accounts/activate-failed.html', {"user": user})

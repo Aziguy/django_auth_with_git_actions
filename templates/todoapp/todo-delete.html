@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Delete Todo{% endblock %}
+
+
+    {% block content %}
+    <!-- Main Section Start -->
+      <main>
+        <div class="container-fluid mt-5">
+            <!-- Material form TODO DELETE -->
+            <h2>DELETE TODO?</h2>
+            {% include 'templates/includes/messages.html' %}
+            <!-- Form -->
+            <form method="POST"  action={% url 'todo-delete' todo.id %} class="form">
+                {% csrf_token %}
+                <p>Are you sure you want to delete this todo?</p>
+                <input type="submit" class="btn btn-delete" value="YES">
+                <a href={% url 'todo-details' todo.id %}>Cancel</a>
+            </form>
+            <!-- Form -->
+            <!-- Material TODO DELETE -->
+        </div>
+      </main>
+    <!-- Main Section End -->
+    {% endblock %}
