@@ -30,7 +30,7 @@ DEBUG = config("DEBUG", cast=bool)
 
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost']
 
 AUTH_USER_MODEL = "accounts.User"
 LOGIN_URL = "/accounts/login"
@@ -83,7 +83,7 @@ WSGI_APPLICATION = "todosite.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': config('ENGINE'),
         # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
