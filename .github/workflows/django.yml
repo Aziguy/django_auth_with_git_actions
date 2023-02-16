@@ -12,7 +12,7 @@ jobs:
       postgres:
         image: postgres:14.6
         env:
-          POSTGRES_DB: postgres
+          POSTGRES_DB: github_actions
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
         ports:
@@ -46,6 +46,7 @@ jobs:
         DB_USER: ${{ secrets.DB_USER }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
         EMAIL_FROM_USER: ${{ secrets.EMAIL_FROM_USER }}
         EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
         EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
