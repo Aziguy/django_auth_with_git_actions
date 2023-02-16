@@ -83,7 +83,7 @@ WSGI_APPLICATION = "todosite.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': config('ENGINE'),
         # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
