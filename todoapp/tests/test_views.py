@@ -6,7 +6,7 @@ from django.urls import reverse
 
 class TestModel(TestSetup):
 
-    def test_should_create_atodo(self):
+    def test_should_create_todo(self):
         user = self.create_test_user()
         self.client.post(reverse("login"), {
             'username': user.username,

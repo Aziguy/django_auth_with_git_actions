@@ -9,12 +9,12 @@ class TestViews(TestSetup):
     def test_should_show_register_page(self):
         response = self.client.get(reverse('register'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "authentication/register.html")
+        self.assertTemplateUsed(response, "accounts/register.html")
 
     def test_should_show_login_page(self):
         response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "authentication/login.html")
+        self.assertTemplateUsed(response, "accounts/login.html")
 
     def test_should_signup_user(self):
         response = self.client.post(reverse("register"), self.user)

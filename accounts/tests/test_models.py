@@ -1,5 +1,5 @@
 from utils.setup_test import TestSetup
-from authentication.models import User
+from accounts.models import User
 
 
 # Create your tests here.
