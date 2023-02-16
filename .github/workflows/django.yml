@@ -52,4 +52,22 @@ jobs:
         EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
         EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
       run: |
-        python manage.py test
+        python manage.py collectstatic --no-input
+        coverage run manage.py test && coverage report --fail-under=75 && coverage xml
+
+    - name: Upload coverage reports to Codecov
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_ENGINE: ${{secrets.DB_ENGINE}}
+
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.html
+        directory: ./coverage/reports/
+        fail_ci_if_error: true

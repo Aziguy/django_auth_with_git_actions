@@ -30,7 +30,7 @@ DEBUG = config("DEBUG", cast=bool)
 
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'localhost']
 
 AUTH_USER_MODEL = "accounts.User"
 LOGIN_URL = "/accounts/login"
